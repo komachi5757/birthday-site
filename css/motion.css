@@ -1,0 +1,160 @@
+/* 導演層：冷黑、蜂蜜色火光、緩慢揭開的清晨。 */
+:root{--gold:#c9af80;--gold2:#e8d8b8;--ink:#eee7db;--ink2:#bbb7ae;--line:rgba(212,193,157,.22)}
+#app{background:#05080d;isolation:isolate}
+#cv{transform-origin:50% 76%;transition:transform 1.7s cubic-bezier(.22,.61,.36,1)}
+#app.inhale #cv{transform:scale(.995)}
+#app.exhale #cv{transform:scale(1.012)}
+#scrim{background:linear-gradient(90deg,rgba(3,7,12,.82),rgba(3,7,12,.23) 56%,rgba(3,7,12,.07)),linear-gradient(0deg,rgba(3,6,10,.9),transparent 44%);transition:opacity 9s ease}
+#bg img{object-position:58% 43%;animation-duration:85s}
+#bg img.g{filter:grayscale(1) brightness(.6) contrast(1.04) blur(3px)}
+#bg img.c{mask-image:linear-gradient(115deg,transparent 40%,#000 60%);-webkit-mask-image:linear-gradient(115deg,transparent 40%,#000 60%);mask-position:0 0;-webkit-mask-position:0 0;transition:mask-position 10s cubic-bezier(.32,.02,.26,1),-webkit-mask-position 10s cubic-bezier(.32,.02,.26,1),opacity .1s;filter:brightness(.9) saturate(.85)}
+#app.dawn #bg img.c{mask-position:100% 0;-webkit-mask-position:100% 0}
+#app.dawn #bg img.g{filter:grayscale(1) brightness(.65) blur(0)}
+#light{inset:-25%;background:linear-gradient(120deg,transparent 42%,rgba(255,228,182,.05) 48%,rgba(255,228,182,.22) 53%,transparent 66%);transform:translateX(65%);transition:transform 12s cubic-bezier(.25,.1,.25,1),opacity 4s ease;mix-blend-mode:screen}
+#app.dawn #light{transform:translateX(-36%);opacity:.65}
+#haze{background:radial-gradient(ellipse at 96% 8%,rgba(255,226,176,.3),transparent 62%)}
+#app.dawn #haze{opacity:.6}
+#vignette{background:radial-gradient(ellipse at 52% 49%,transparent 25%,rgba(0,0,0,.58));transition:opacity 9s}
+#grain{opacity:.045;transition:opacity 10s}
+#app.dawn #grain{opacity:.025}#app.dawn #vignette{opacity:.5}
+#blackout{position:absolute;inset:0;background:#000;z-index:14;pointer-events:none;opacity:0;transition:opacity 1.5s linear}
+#app.blackout #blackout{opacity:1}
+#app.blackout{background:#000}
+#sc-gate{padding-top:20vh}
+#sc-gate h1{font-size:clamp(30px,4.2vw,60px);font-weight:400;letter-spacing:.25em;margin:24px 0 18px;text-shadow:none}
+#sc-gate .eyebrow{color:#c0b7a4;font-size:11px;letter-spacing:.48em}
+#sc-gate p{font-size:13px;letter-spacing:.32em}
+#sc-gate .hint{bottom:9%;font-size:12px;animation:pulse 5s ease-in-out infinite}
+#sc-gate .hint:before{height:32px;opacity:.6}
+#sc-ignite{padding-top:20vh}
+#sc-ignite .big{font-size:clamp(62px,8vw,112px);font-weight:400;letter-spacing:.22em;filter:blur(6px);transition:opacity 4s,transform 5s,filter 4s}
+#sc-ignite.show .big{filter:blur(0)}
+#sc-ignite .sub{letter-spacing:.35em;color:#c4b69d}
+.scene{padding:clamp(24px,5vw,80px)}
+#sc-story{align-items:flex-start;padding-left:10vw;padding-bottom:18vh}
+.story{width:min(490px,100%);max-width:490px}
+.story .cap{font-size:12px;letter-spacing:.4em;color:#d9c6a4;margin-bottom:28px}
+.story p{font-size:clamp(16px,1.4vw,19px);line-height:2.2;letter-spacing:.055em;text-shadow:0 2px 22px #000;margin:0 0 22px}
+.story .cta{margin-top:30px;gap:20px}
+#sc-story.on .story p{animation:memory-rise 2.8s both;animation-delay:calc(var(--paragraph,0)*1.9s + 1s)}
+@keyframes memory-rise{from{opacity:0;filter:blur(4px);transform:translateY(12px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+.panel{width:min(510px,100%);padding:36px 38px 28px;border-radius:3px;border-color:rgba(220,204,176,.19);background:rgba(9,13,18,.65);box-shadow:0 30px 100px #0006;backdrop-filter:blur(22px)}
+.panel h2{font-weight:400;font-size:25px;letter-spacing:.1em;margin-bottom:16px}
+.panel .lead{line-height:1.95;color:#bebbb4;font-size:14px}
+.field{margin:22px 0 0}.field label{font-size:12px;color:#c4beb2;letter-spacing:.08em}
+.field input,.field textarea{background:rgba(255,255,255,.025);border:0;border-bottom:1px solid #b7aa8c55;border-radius:0;font-size:16px;padding:12px 1px;outline-offset:4px}
+.field textarea{min-height:92px;resize:vertical}.field input::placeholder,.field textarea::placeholder{color:#8e918f}
+.btn{border-radius:2px;min-height:46px;font-size:13px;letter-spacing:.14em;padding:12px 22px;backdrop-filter:blur(8px)}
+.btn.gold{background:#d8c39a;box-shadow:none;color:#252019}.btn.gold:hover{background:#e4d1ad;box-shadow:0 4px 30px #d8c39a12}
+.btn.text{min-height:44px;font-size:12px}.btn.ghost{background:#0a101750}
+:focus-visible{outline:2px solid #ead0a2;outline-offset:5px}
+#nameCount,#msgCount{display:none}
+#figure{height:var(--figure-size,660px);left:var(--figure-left,0px);bottom:var(--figure-bottom,0px);transform:translate(-18px,8px);transform-origin:30% 100%;transition:opacity 3.5s ease,transform 4s cubic-bezier(.22,.61,.36,1);z-index:3}
+#figure .body{transform-origin:38% 86%;transition:transform 2.3s cubic-bezier(.32,.04,.32,1)}
+#figure .chest{transform-origin:42% 62%;animation:none}
+#app.approach #figure{opacity:1;transform:translate(0,0)}
+#app.lean #figure .body{transform:rotate(10deg) translate(1%,1%)}
+#app.inhale #figure .chest{animation:inhale 1.8s ease-in-out forwards}
+#app.exhale #figure .chest{animation:exhale 3.8s cubic-bezier(.16,.55,.4,1) forwards}
+@keyframes inhale{from{transform:scale(1)}to{transform:scale(1.018,1.025) translate(-.3%,-.4%)}}
+@keyframes exhale{from{transform:scale(1.018,1.025) translate(-.3%,-.4%)}to{transform:scale(.995,.991) translate(.3%,.4%)}}
+#app.blowing #bg{opacity:.28;transition:opacity 4s}
+#app.dawn #figure{opacity:0;transition:opacity 3s}
+#sc-final{padding-top:12vh}
+#sc-final h1{font-size:clamp(40px,5.6vw,76px);font-weight:500;letter-spacing:.16em;padding-left:.16em;text-shadow:0 3px 34px #000b,0 0 54px #d7b77b45}
+#sc-final p{font-size:13px;letter-spacing:.18em}
+#cloudBar{visibility:hidden;pointer-events:none;width:max-content;max-width:calc(100% - 36px);bottom:max(40px,env(safe-area-inset-bottom));gap:12px}
+#app.cloudmode #cloudBar{visibility:visible;pointer-events:auto}
+.wd{line-height:1.7;white-space:normal;overflow-wrap:anywhere;font-weight:400;letter-spacing:.025em;text-align:center;text-shadow:0 2px 16px #000c;will-change:auto}
+.wd small{font-size:11px;line-height:1.6;letter-spacing:.12em;margin-top:5px;opacity:.7;text-align:center}
+.wd.in{animation:floaty var(--wt,16s) ease-in-out infinite alternate}
+.wd.mine{color:#ffefd1;text-shadow:0 2px 15px #000a}
+.wd .del{width:44px;height:44px;right:-28px;top:-25px;background:transparent;color:#f0dfc7;font-size:20px;line-height:44px;z-index:2}
+.hud{top:max(24px,env(safe-area-inset-top));right:26px}.icon{width:44px;height:44px;border-color:#c9b89835;background:#080d1233}
+.mockbadge{top:auto;bottom:11px;left:50%;font-size:9px;padding:0;border:0;background:none;color:#938b7b;letter-spacing:.1em;border-radius:0}
+/* #ver 不可以隱藏：版本水印是使用者判斷「這是不是我要看的那一版」的唯一依據，
+   關掉就等於每次都要回來問人。要低調可以，要消失不行。 */
+/* pointer-events:none：水印疊在進場的全螢幕點擊區上方，不關掉的話
+   那一小塊會變成點不動的死角。 */
+#ver{opacity:.45;font-size:9px;pointer-events:none}
+#foot{font-size:9px;color:#aaa49a;max-width:29vw;opacity:.6}
+@media(max-width:720px){
+ #sc-gate{padding-top:23vh}#sc-gate h1{font-size:29px;letter-spacing:.15em;padding-left:.15em}#sc-gate p{font-size:12px;letter-spacing:.16em}
+ #sc-ignite{padding-top:24vh}#sc-ignite .big{font-size:65px}
+ #sc-story{padding:76px 28px 180px;justify-content:center}.story p{font-size:16px;line-height:1.95;margin-bottom:18px}.story .cap{margin-bottom:24px}.story .cta{gap:8px;flex-wrap:wrap;margin-top:22px}
+ #sc-wish{padding:66px 20px 45px;overflow-y:auto;justify-content:safe center}.panel{padding:28px 23px 20px}.panel h2{font-size:22px}.panel .lead{font-size:13px;line-height:1.85}.field{margin-top:17px}.note{font-size:11px}
+ .row{gap:4px}.row .btn.gold{padding:12px 16px;letter-spacing:.06em}
+ #sc-final{padding:100px 15px 0}#sc-final h1{font-size:25px;letter-spacing:.08em;white-space:nowrap;padding-left:.08em}#sc-final p{font-size:12px;letter-spacing:.07em}
+ .hud{top:max(16px,env(safe-area-inset-top));right:16px}#cloudBar{bottom:max(58px,env(safe-area-inset-bottom));gap:8px}#cloudBar .btn{font-size:12px;padding:12px 17px}
+ #foot{left:22px;right:22px;bottom:25px;max-width:none;font-size:8px;text-align:center}.mockbadge{bottom:8px;font-size:8px}
+ /* 窄螢幕的底部已經被 #foot 與 .mockbadge 佔滿，版本水印會壓在標籤上。
+    移到左上角（右上角是靜音鈕），這樣它仍然看得見，也不擋任何東西。 */
+ #ver{top:8px;left:10px;right:auto;bottom:auto}
+}
+@media(max-height:600px){#sc-story{overflow-y:auto;justify-content:flex-start;padding-top:70px;padding-bottom:35px}#sc-wish{justify-content:flex-start;padding-top:70px}.panel{margin:auto}#sc-final{padding-top:65px}}
+@media(prefers-reduced-motion:reduce){#bg img,.wd.in,#sc-gate .hint{animation:none!important}#cv{transform:none!important}#sc-story.on .story p{animation:memory-rise .8s both}#sc-ignite .big{filter:none}.scene{transform:none}#light{transition:opacity 8s;transform:none!important}}
+
+/* 第二輪：讓黑位仍有冷空氣的深度；不在動畫幀內建立漸層。 */
+#app::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 58% 43%,#18232f40,transparent 65%);z-index:0}
+.field input:focus-visible,.field textarea:focus-visible{outline:1px solid #d6c39c;outline-offset:5px}
+
+/* 第三輪：保留照片中心的光，字句所在的兩側有安靜的暗部。 */
+#app.cloudmode #scrim{opacity:1;background:linear-gradient(90deg,#05090d70,transparent 42%,transparent 62%,#05090d70),linear-gradient(0deg,#05090d66,transparent 65%)}
+@media(max-width:720px){#app.cloudmode #scrim{background:linear-gradient(0deg,#05090d80,#05090d38 60%,#05090d30)}}
+
+/* 第四輪（計畫窗口代 GPT-6 施作）：少年改用美術部的三姿勢剪影，交叉淡入；不再旋轉整體。 */
+#figure .body,#figure .chest{position:absolute;inset:0}
+#figure .pose{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:left bottom;opacity:0;transition:opacity 1.6s ease;filter:drop-shadow(0 0 22px #000c)}
+#figure .pose.stand{opacity:1}
+#app.lean #figure .pose.stand{opacity:0}#app.lean #figure .pose.lean{opacity:1}
+#app.exhale #figure .pose.lean{opacity:0}#app.exhale #figure .pose.blow{opacity:1}
+#app.lean #figure .body{transform:translate(1%,.5%)}
+#app.dawn #figure .pose{transition:opacity 3s}
+
+/* 文字雲三層深度與輪流高光 */
+.wd{transition:opacity 1.15s ease,transform 1.15s ease,color 1.2s ease,text-shadow 1.2s ease}
+.wd.d-far{letter-spacing:.04em;filter:blur(.3px)}
+.wd.hi{opacity:1!important;color:#fff7e8;text-shadow:0 0 14px rgba(255,235,190,.6),0 2px 16px #000c}
+/* 第二輪：照片構圖、獨立的最後一顆星與有深度的暗室。 */
+#room{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 53%;opacity:.52;z-index:0;transition:opacity 4s;pointer-events:none}
+#app.showbg #room{opacity:0}#app.blowing #room{opacity:.65}#app.dawn #room{opacity:0}
+#bg img{inset:0;width:100%;height:100%;object-position:50% 12%;transform-origin:50% 30%;animation:portrait-breath 36s ease-in-out infinite alternate}
+@keyframes portrait-breath{from{transform:scale(1)}to{transform:scale(1.035)}}
+#bg img.g{filter:grayscale(1) brightness(.56) contrast(1.08) blur(3px)}
+#bg img.c{mask-image:linear-gradient(115deg,transparent 40%,#000 60%);-webkit-mask-image:linear-gradient(115deg,transparent 40%,#000 60%);mask-size:300% 100%;-webkit-mask-size:300% 100%;mask-position:0 0;-webkit-mask-position:0 0;filter:brightness(.91) saturate(.82)}
+#app.dawn #bg img.c{mask-position:100% 0;-webkit-mask-position:100% 0}
+#app.blowing #bg{opacity:0;transition:opacity 3.5s}
+#figure{width:var(--figure-size);height:var(--figure-height);aspect-ratio:auto}
+#figure .pose{object-fit:fill;filter:blur(.35px)}
+#app.lean #figure .body{transform:translate(0,0)}
+#figure .chest{transform-origin:40% 70%}
+#app.released #figure .chest{animation:none;transform:translate(0,3px)}
+#wish-star-light{position:absolute;inset:0;width:100%;height:100%;z-index:15;pointer-events:none}
+#app.blackout .hud{opacity:0;pointer-events:none}#app .hud{transition:opacity 1.5s}
+#light{background:linear-gradient(116deg,transparent 39%,#ffe5b70c 44%,#ffe5b729 47%,transparent 50%,#fff2db0b 53%,#fff2db29 55%,transparent 58%,#fff2db14 61%,transparent 65%);filter:blur(16px)}
+.panel{border-radius:12px;background:rgba(6,9,16,.72);border-color:rgba(245,230,200,.12);backdrop-filter:blur(28px) saturate(130%);-webkit-backdrop-filter:blur(28px) saturate(130%);box-shadow:0 20px 50px #0008}
+.field input,.field textarea{background:transparent;border-bottom-color:rgba(255,240,210,.25)}
+.btn.gold{background:linear-gradient(135deg,#c49a6c,#a2815b);color:#0a0e17;border-radius:3px}
+.btn.gold:hover{background:linear-gradient(135deg,#d4ad80,#b59168);box-shadow:0 0 20px #c49a6c40}
+#sc-story{padding-left:7vw}.story{max-width:420px}
+#scrim{background:linear-gradient(90deg,#03070ce6,rgba(3,7,12,.3) 38%,transparent 68%),linear-gradient(0deg,#03060ad9,transparent 45%)}
+@media(max-width:720px){
+ #bg img{object-position:50% 36%;transform-origin:50% 32%}
+ #sc-story{padding:70px 28px 150px;justify-content:center}.story{max-width:none}
+ #app[data-scene="story"] #scrim{background:linear-gradient(0deg,#03070cf0,#03070c7d 70%,#03070c33)}
+ #room{object-position:60% 50%}
+ #sc-final{padding-top:72px}#sc-final h1{font-size:clamp(28px,8.2vw,38px);letter-spacing:.06em;padding-left:.06em}
+ #app.cloudmode #scrim{background:linear-gradient(0deg,#03070cbf,transparent 62%),linear-gradient(180deg,#03070c75,transparent 28%)}
+}
+@media(prefers-reduced-motion:reduce){#bg img{animation:none!important}}
+/* 看圖修正一：故事讓出臉部，側影下緣融入暗處，雲層保留照片。 */
+#app[data-scene="story"] #bg img{object-position:50% 22%}
+#app[data-scene="story"] #cv{opacity:.35;transition:opacity 3s}
+#figure{mask-image:linear-gradient(#000 82%,transparent 100%);-webkit-mask-image:linear-gradient(#000 82%,transparent 100%)}
+@media(max-width:720px){#app[data-scene="story"] #bg img{object-position:50% 36%}}
+/* 尾聲保留照片與祝福；停止已結束的揭光合成，避免全幅透明層持續重繪。 */
+#vignette{mix-blend-mode:normal}
+#app.cloudmode #light,#app.cloudmode #haze,#app.cloudmode #grain{opacity:0;transition:opacity 3s}
+#app.cloudmode #bg img.g{visibility:hidden}
+#app.cloudmode #bg img.c{mask:none;-webkit-mask:none;animation-play-state:paused}
+.wd{will-change:transform,opacity}
