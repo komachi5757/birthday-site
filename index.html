@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="獻給楊承勳的生日紀念與祝福網站。點亮燭光、聽見祝福，記得這樣美好的他。">
+  <meta name="robots" content="noindex,nofollow,noimageindex,noarchive,nosnippet">
+  <meta name="googlebot" content="noindex,nofollow,noimageindex,noarchive,nosnippet">
+  <title>楊承勳生日</title>
+  <link rel="icon" href="assets/motion/candle.svg">
+  <link rel="stylesheet" href="css/memorial.css">
+  <link rel="stylesheet" href="css/motion.css">
+</head>
+<body>
+  <p class="sr-only">楊承勳生日紀念網站。這裡以燭光、照片、音樂與親友的聲音送上生日祝福；訪客可觀看完整動畫，也可留下名字與一句話，讓祝福化作晨光裡的文字。</p>
+  <p class="sr-only">所有送出的祝福都會保存並輪流浮現；訪客自己的祝福與家人的祝福會優先顯示，同時保留照片中央的臉部空間。</p>
+  <div id="app" data-scene="gate">
+    <img id="room" src="assets/motion/gemini/plate-night.jpg" alt="" aria-hidden="true">
+    <div id="bg"><img class="g" id="bgG" alt=""><img class="c" id="bgC" alt=""></div>
+    <div id="scrim"></div><canvas id="cv" aria-hidden="true"></canvas><div id="light"></div><div id="haze"></div>
+    <div id="figure" aria-hidden="true"><div class="body"><div class="chest">
+      <img class="pose stand" src="assets/motion/gemini/youth-01-stand.png" alt="" decoding="async">
+      <img class="pose lean" src="assets/motion/gemini/youth-02-lean.png" alt="" decoding="async">
+      <img class="pose blow" src="assets/motion/gemini/youth-03-blow.png" alt="" decoding="async">
+    </div></div></div>
+    <section class="scene on" id="sc-gate" data-s="gate">
+      <div class="eyebrow" id="eyebrow">2008 · 9 · 12</div><h1 class="serif" id="title">楊承勳生日</h1>
+      <p id="subtitle">今晚，為楊承勳點一盞生日的光</p><button id="gateBtn" disabled aria-label="輕觸，點亮"></button><div class="hint">輕觸，點亮</div>
+    </section>
+    <section class="scene" id="sc-ignite" data-s="ignite"><div class="big serif">楊承勳</div><div class="sub">生日快樂</div></section>
+    <section class="scene" id="sc-story" data-s="story"><div class="story" id="storyText">
+      <div class="cap" id="storyCap">楊承勳</div><p>他是爸媽最棒的兒子、姊姊身旁溫暖體貼的弟弟。</p><p>他有主見、認真負責，說到做到、盡心盡責。</p><p>希望大家都記得</p><p>這樣美好的他</p><p>今晚，願每一盞燭光，都替我們說一句：生日快樂。</p>
+      <div class="cta"><button class="btn gold wish-cta" id="toWish">寫下我的祝福 →</button><button class="btn text" id="skipWish">先看大家的祝福</button></div>
+    </div></section>
+    <section class="scene" id="sc-wish" data-s="wish"><form class="panel" id="wishForm" novalidate>
+      <h2>送出一份生日祝福</h2><p class="lead">寫下你的名字與一句話。送出後，他會吹熄蠟燭，你的祝福會和大家的一起，浮在晨光裡。</p>
+      <div class="field"><label for="name"><span>你的名字或稱呼</span><span id="nameCount">0 / 20</span></label><input id="name" maxlength="20" autocomplete="off" placeholder="可留空，將顯示為「一位朋友」"></div>
+      <div class="field"><label for="message"><span>想對他說的話</span><span id="msgCount">0 / 60</span></label><textarea id="message" maxlength="60" placeholder="生日快樂。"></textarea></div>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="err" id="formErr" role="alert"></div>
+      <div class="row"><button type="button" class="btn text" id="backStory">← 返回</button><button type="submit" class="btn gold" id="sendBtn">送出生日祝福</button></div>
+      <p class="note">祝福只儲存在目前使用的瀏覽器裝置內，不會傳送到外部伺服器。</p>
+    </form></section>
+    <section class="scene" id="sc-final" data-s="final"><h1 id="finalTitle">楊承勳 生日快樂</h1><p id="finalSub">為你獻上我們的祝福 這是希望世界更好的祈願</p></section>
+    <div id="cloud" aria-live="polite"></div><div id="cloudBar"><button class="btn gold wish-cta" id="cloudWish">我也要留下祝福</button><button class="btn ghost" id="replay">再看一次</button></div>
+    <div id="blackout" aria-hidden="true"></div><div id="vignette"></div><div id="grain"></div>
+    <div class="hud"><button class="icon" id="muteBtn" data-state="off" aria-label="音樂開關" title="音樂"><svg class="on-ic" viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6L8 10H4z"></path><path d="M16 9a4 4 0 0 1 0 6"></path><path d="M18.5 6.5a8 8 0 0 1 0 11"></path></svg><svg class="off-ic" viewBox="0 0 24 24"><path d="M4 10v4h4l5 4V6L8 10H4z"></path><path d="M17 9l4 6M21 9l-4 6"></path></svg></button></div>
+    <div id="toast" role="status"></div><div id="foot"></div><div id="ver"></div><audio id="music" loop preload="auto"></audio>
+  </div>
+  <script src="config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/motion/sound.js"></script>
+  <script src="js/motion/memorial.js"></script>
+</body>
+</html>
