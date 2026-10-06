@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+ <defs><linearGradient id="skin" x1="0" x2="1"><stop stop-color="#030509"/><stop offset=".8" stop-color="#080b10"/><stop offset="1" stop-color="#191a1c"/></linearGradient><linearGradient id="edge"><stop stop-color="#8e7961" stop-opacity="0"/><stop offset="1" stop-color="#b69b76" stop-opacity=".5"/></linearGradient></defs>
+ <g id="person">
+  <path fill="url(#skin)" d="M72 997H743L855 1800H-40Z"/>
+  <!-- 肩背、頸部與側臉連成單一重量；沒有五官細節。 -->
+  <path fill="url(#skin)" d="M72 1000C90 902 98 773 126 650C144 571 193 512 278 482C316 468 352 466 392 455L419 412C383 384 370 354 361 314C345 250 357 201 390 160C418 123 456 104 505 105C540 96 568 108 589 121L611 130L631 153L647 172L655 195L654 229C659 244 664 260 664 276L669 297C678 310 694 318 708 328Q718 339 704 343L693 346L701 351Q713 355 704 360L691 364Q700 373 692 379L683 382C684 403 674 416 653 421L608 424C586 428 570 442 566 463C601 480 632 500 650 534C670 571 687 628 692 675L703 785L743 1000Z"/>
+  <!-- 衣服的摺線只留極低亮度的反光。 -->
+  <path d="M390 457Q453 503 565 465M286 501Q368 517 407 571M588 531Q622 645 614 792M209 678Q189 825 189 1000" fill="none" stroke="#3e3932" stroke-opacity=".2" stroke-width="3"/>
+  <path d="M646 194L654 229Q668 261 664 276L669 297Q681 315 708 328Q718 339 704 343L693 346L701 351Q713 355 704 360L691 364Q700 373 692 379L683 382Q687 419 653 421L608 424Q579 427 566 463Q640 498 661 562" fill="none" stroke="url(#edge)" stroke-width="2.2"/>
+ </g>
+</svg>
